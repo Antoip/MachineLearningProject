@@ -118,7 +118,17 @@ ggplot(data3) +
 # Looking at the different field positions we see that, for a given market value, Defensers get a better wage than Attackers. 
 # This reflects the law of offer and supply: there are more Attackers valued at 30 M€ than Defensers so the latter get better paid.
 
+ggplot(data) +
+  aes(x=`Offensive Work Rate`, y=`Value (in M€)`, fill=`Offensive Work Rate`) +
+  geom_boxplot() +
+  scale_y_log10()
 
+ggplot(data) +
+  aes(group=Overall, y=`Value (in M€)`, fill=Overall) +
+  geom_boxplot(colour="Black", size=0.3) +
+  scale_fill_gradient(low="White", high="Blue") +
+  scale_x_continuous(limits=c(-0.2,0.4)) +
+  facet_grid(Field_Position~.)
 
 
 
